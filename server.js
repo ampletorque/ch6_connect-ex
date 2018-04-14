@@ -1,4 +1,5 @@
 const connect = require('connect');
+const errorHandler = require('./errornew.js');
 
 function setup(format) {
 	const regexp = /:(\w+)/g;
@@ -20,10 +21,12 @@ function logger(req, res, next) {
 
 function hello(req, res) {
 	res.setHeader('Content-Type', 'text/plain');
+	foo();
 	res.end('hello world');
 }
 
 const app = connect()
+        .use(errorHandler)
 	.use(logger)
         .use(setup(':method :url'))
 	.use(hello)
