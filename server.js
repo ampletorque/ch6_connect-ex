@@ -24,7 +24,7 @@ function hello(req, res) {
 }
 
 const app = connect()
-	.use(logger(':method :url'))
+	.use(logger)
         .use(setup(':method :url'))
 	.use(hello)
 	.listen(3000);
